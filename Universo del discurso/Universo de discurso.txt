@@ -1,5 +1,0 @@
-Organized Diary es una aplicación para todo público, que permite organizar sus tareas con su respectiva ID, descripción, fecha de entrega y recordatorio. 
-
-Los recordatorios pueden recordar al usuario cada cierto tiempo según se programe, mediante una notificacion cada tantos minutos, horas o días.
-
-Los usuarios deberán registrarse a la plataforma usando un nombre de usuario, un correo electrónico y una contraseña.
