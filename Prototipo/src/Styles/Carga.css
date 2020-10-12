@@ -1,0 +1,12 @@
+.Carga h1 {
+  font-size: 40px;
+  margin-left: 0;
+  margin-bottom: 40px;
+}
+.Carga h1:nth-child(3) {
+  margin-top: 40px;
+  margin-left: 0;
+}
+.Carga img {
+  height: 220px;
+}

@@ -1,0 +1,11 @@
+.Calendario img{
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.Calendario button{
+  height: 40px;
+  width: 120px;
+  margin-left: 460px;
+  margin-top: 10px;
+}
