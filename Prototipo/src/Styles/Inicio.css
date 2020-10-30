@@ -9,10 +9,18 @@
 
 .Inicio button{
     height: 60px;
-    width: 200px;
+    width: 250px;
     font-size: 25px;
     margin-top: 60px;
 }
 .Inicio button:nth-child(3) {
     width: 300px;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+
+.Inicio .titulo{
+
+ margin-top: 60px;
+}
 }
