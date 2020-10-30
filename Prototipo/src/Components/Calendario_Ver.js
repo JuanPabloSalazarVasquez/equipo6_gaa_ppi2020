@@ -3,7 +3,7 @@ import Calendar from 'react-calendar';
 import { Link } from 'react-router-dom';
 import "../Styles/Calendario.css"
 
-export default function Calendario() {
+export default function Calendario_Ver() {
   const [value, setValue] = useState(new Date());
 
   function onChange(nextValue) {
@@ -18,7 +18,7 @@ export default function Calendario() {
       value={value.date}
       className="react-calendar"
     />
-    <Link to="/Recordatorio"> <button className="boton">Ok</button> </Link>
+    <Link to="/Ver_Tarea"> <button className="boton">Ok</button> </Link>
     </div>
     </div>
   );
