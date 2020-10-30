@@ -6,7 +6,7 @@
 .Tablero .fondo, .Tablero_2 .fondo {
   padding: 50px;
   margin: 0 200px;
-  background-color: blue;
+  background-color: #00A6FF;
   border-radius: 20px;
   height: 400px;
 }
@@ -20,6 +20,8 @@
 
 .Tablero .item button, .Tablero_2 .item button  {
   width: 100px;
+  height: 40px;
+  background-color: #0074FF;
 }
 
 .Tablero .item .basura, .Tablero_2 .item .basura{
@@ -33,9 +35,34 @@
 }
 
 .Tablero .btn_añadir {
-  margin-top: 150px;
+  margin-top: 145px;
 }
 
 .Tablero_2 .btn_añadir {
   margin-top: 45px;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+
+  .Tablero .fondo, .Tablero_2 .fondo {
+    padding: 50px;
+    margin: 0 50px;
+    background-color: #00A6FF;
+    border-radius: 20px;
+    height: 550px;
+  }
+
+  .Tablero .btn_añadir {
+    margin-left: -30px;
+    margin-top: 350px;
+    
+  }
+  
+  .Tablero .item, .Tablero_2 .item {
+    display: flex;
+    margin-left: -25px;
+    margin-top: -10px;
+    margin-bottom: 50px;
+  }
+  
 }
