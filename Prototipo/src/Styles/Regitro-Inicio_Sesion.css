@@ -19,6 +19,7 @@
   height: 35px;
   width: 150px;
   margin-top: 30px;
+  margin: 30px
 }
 .Registro button:nth-child(1),
 .Inicio_Sesion button:nth-child(1) {
@@ -27,4 +28,22 @@
 .Registro button:nth-child(2),
 .Inicio_Sesion button:nth-child(2) {
   margin-left: 50px;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+  .Registro h1,
+  .Inicio_Sesion h1 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .Registro button,
+  .Inicio_Sesion button {
+  height: 35px;
+  width: 150px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
 }
