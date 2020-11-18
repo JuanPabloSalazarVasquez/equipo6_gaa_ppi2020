@@ -36,15 +36,16 @@ router.post('/usuario', (req, res) => {
 
 //Petición put
 router.put('/usuario/:id', (req, res) => {
-  const { email, contraseña, id_tipo_usuario } = req.body
-  const { id } = req.params
+  const { nombre_usuario, email, contraseña, id_tipo_usuario } = req.body
+  const { id_usuario } = req.params
 
   mysqlConnection.query(`UPDATE usuario
-                       SET email = ?,
+                       SET nombre_usuario = ?
+                       email = ?,
                        contraseña = ?,
                        id_tipo_usuario = ?
-                       WHERE nombre_usuario = ?`,
-    [email, contraseña, id_tipo_usuario, id], (err, rows, fields) => {
+                       WHERE id_usuario = ?`,
+    [nombre_usuario, email, contraseña, id_tipo_usuario, id_usuario], (err, rows, fields) => {
       if (!err) {
         res.json({ status: `Tipo usuario ha sido actualizado con éxito` });
       } else {
@@ -55,8 +56,8 @@ router.put('/usuario/:id', (req, res) => {
 
 //PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
 router.delete('/usuario/:id', (req, res) => {
-  const { id } = req.params;
-  mysqlConnection.query(`DELETE FROM usuario WHERE nombre_usuario =?`, [id], (err, rows, fields) => {
+  const { id_usuario } = req.params;
+  mysqlConnection.query(`DELETE FROM usuario WHERE id_usuario =?`, [id_usuario], (err, rows, fields) => {
     if ("!err") {
       res.json({ status: `El usuario ha sido eliminado con exito` })
     } else {
