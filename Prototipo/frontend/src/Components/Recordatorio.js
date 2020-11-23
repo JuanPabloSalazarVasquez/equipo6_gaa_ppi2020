@@ -1,13 +1,13 @@
 import React from "react";
 import "../Styles/Recordatorio.css";
 import { InputGroup } from "react-bootstrap";
+import { Link } from 'react-router-dom'
 
 import "../Global.css";
 
 export default function Inicio() {
   return (
     <div className="Recordatorio">
-      <div className="separador"></div>
 
       <h1> Recordatorio </h1>
 
@@ -35,7 +35,7 @@ export default function Inicio() {
         <p> 1 </p>
       </div>
 
-      <button> Agregar Tarea </button>
+      <Link to="/Tablero_2"> <button> Agregar Tarea </button> </Link>
       </div>
     </div>
   );
