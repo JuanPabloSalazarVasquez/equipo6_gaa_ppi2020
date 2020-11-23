@@ -1,0 +1,34 @@
+body {
+  background-color: #0074FF;
+  padding-top: 60px;
+}
+
+.center_txt {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+button {
+  color: white;
+  background-color: #00B0FF;
+  border: #8492A6;
+  border-radius: 50px;
+}
+
+.separador{
+  border: 1px white dashed;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.contenedor{
+padding: 0 200px;
+}
