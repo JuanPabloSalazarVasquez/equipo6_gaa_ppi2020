@@ -1,3 +1,4 @@
+
 .Ingresar_Tarea {
   padding: 50px 0;
 }
@@ -11,7 +12,7 @@
   color: rgb(255, 245, 245);
 }
 
-.Ingresar_Tarea p {
+.Ingresar_Tarea p{
   font-size: 20px;
 }
 
@@ -30,11 +31,11 @@
 .Ingresar_Tarea .text {
   height: 200px;
   width: 100%;
-  border-radius: 10px;
-  background-color: #73b2ff;
+  border-radius: 15px;
+  background-color: #73B2FF;
 }
 
-.Ingresar_Tarea .text .caracteres_restantes {
+.Ingresar_Tarea .text .caracteres_restantes{
   color: grey;
   float: right;
   margin-top: 170px;
@@ -44,9 +45,10 @@
 .Ingresar_Tarea .Botones {
   float: right;
   margin-right: 50px;
+
 }
 
-.Ingresar_Tarea button {
+.Ingresar_Tarea .btn_continuar {
   height: 40px;
   width: 120px;
   display: inline-block;

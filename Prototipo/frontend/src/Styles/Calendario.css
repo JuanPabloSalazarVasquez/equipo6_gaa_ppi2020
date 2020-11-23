@@ -32,8 +32,13 @@
     font-size: 18px;
 }
 
+.Calendario {
+    display: none
+}
+
 .Calendario .contenedor{
     padding: 0 200px;
+
 }
 
 .Calendario button{
