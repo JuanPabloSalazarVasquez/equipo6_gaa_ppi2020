@@ -113,23 +113,23 @@ class Tablero extends React.Component {
             {this.state.data.map(tarea => {
               return (
                 <div className="item">
-                  <button>{tarea.id}</button>
+                  <Link to='/Ver_Tarea/:{tarea.id}'><button>{tarea.titulo}</button> </Link>
                   <button className="btn_basura" onClick={() => { this.seleccionarTarea(tarea); this.setState({ modalEliminar: true }) }}> <img src="./img/basurita.png" alt="Basura" className="basura" /> </button>
                 </div>
               )
             })}
 
-            <Link to="/Calendario"> <img className="btn_añadir" src="./img/agregar.png" alt="añadir" /> </Link>
+            <Link to="/Ingresar_Tarea"> <img className="btn_añadir" src="./img/agregar.png" alt="añadir" /> </Link>
           </div>
         </div>
 
         <div className="container text-center">
+
           <Modal id="formContent" isOpen={this.state.modalInsertar}>
             <h1>Modal Insertar</h1>
             <ModalHeader style={{ display: 'block' }}>
             </ModalHeader>
             <ModalBody>
-
               <div className="form-group wrapper fadeInDown">
                 <label htmlFor="id">id</label><br />
                 <input className="form-control" type="text" name="id" id="id" onChange={this.handleChange} value={this.state.form ? this.state.form.id : ''} />
@@ -163,7 +163,6 @@ class Tablero extends React.Component {
                 <input className="form-control" type="text" name="id_usuario" id="id_usuario" onChange={this.handleChange} value={this.state.form ? this.state.form.id_usuario : ''} />
                 <br />
               </div>
-
             </ModalBody>
             <ModalFooter >
               {this.state.tipoModal == 'insertar'}
@@ -177,12 +176,12 @@ class Tablero extends React.Component {
                 Cancelar
           </button>
             </ModalFooter>
-
           </Modal>
         </div>
+
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            ¿Está seguro de eliminar el tarea?  {this.state.form && this.state.form.titulo}
+            ¿Está seguro de eliminar la tarea {this.state.form && this.state.form.titulo}?
           </ModalBody>
           <ModalFooter>
             <button className="btn btn-danger" onClick={() => this.PeticionesDelete()}>Sí</button>
