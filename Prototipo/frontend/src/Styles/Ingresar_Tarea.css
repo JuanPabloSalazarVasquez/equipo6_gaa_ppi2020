@@ -1,6 +1,6 @@
 
 .Ingresar_Tarea {
-  padding: 50px 0;
+  padding: 0px 0;
 }
 
 .Ingresar_Tarea h1 {
@@ -48,20 +48,9 @@
 
 }
 
-.Ingresar_Tarea .btn_continuar {
+.Ingresar_Tarea button {
   height: 40px;
   width: 120px;
   display: inline-block;
   margin: 20px;
-}
-
-@media only screen and (min-width: 325px) and (max-width: 767px) {
-  .Ingresar_Tarea h1 {
-    margin-left: 50px;
-  }
-
-  .Ingresar_Tarea .Botones {
-    float: right;
-    margin-right: 5px;
-  }
 }
