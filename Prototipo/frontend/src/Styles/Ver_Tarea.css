@@ -40,12 +40,7 @@
   margin-top: 10px;
 }
 
-.Ver_Tarea .text .caracteres_restantes{
-  color: grey;
-  float: right;
-  margin-top: 120px;
-  margin-right: 10px;
-}
+
 
 .Ver_Tarea .Botones {
   float: right;
@@ -61,4 +56,30 @@
   width: 120px;
   display: inline-block;
   margin: 20px;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+
+  .Ver_Tarea {
+    padding: 10px;
+  }
+  .Ver_Tarea h1 {
+    margin-left: 40px;
+  }
+  .Ver_Tarea h4 {
+    margin-top: 59px;
+    
+    color: rgb(255, 245, 245);
+  }
+
+  .Ver_Tarea .contenedor {
+    padding: 0px 50px;
+  }
+  .Ver_Tarea button {
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    margin-left: 70px;
+  }
+
 }
