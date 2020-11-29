@@ -1,28 +1,28 @@
-.Recordatorio{
+.Ingresar_Tarea .Recordatorio{
   display: none;
 }
 
-.Recordatorio h1 {
+.Ingresar_Tarea .Recordatorio h1 {
   margin-left: 150px;
 }
 
-.Recordatorio .item {
+.Ingresar_Tarea .Recordatorio .item {
   display: flex;
   margin-left: 200px;
   margin-top: 20px;
 }
 
-.Recordatorio .input{
+.Ingresar_Tarea .Recordatorio .input{
   height: 10px;
 }
 
-.Recordatorio .item h3{
+.Ingresar_Tarea .Recordatorio .item h3{
   color: white;
   width: 200px;
   margin-left: 10px;
 }
 
-.Recordatorio .item p {
+.Ingresar_Tarea .Recordatorio .item p {
   background-color: #73B2FF;
   border-radius: 10px;
   margin-left: 70px;
@@ -31,10 +31,40 @@
   text-align: center
 }
 
-.Recordatorio button {
+.Ingresar_Tarea .Recordatorio button {
   margin-left: 500px;
   margin-top: 20px;
   height: 40px;
   width: 150px;
   color: white;
 }
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+
+  .Ingresar_Tarea .Recordatorio .contenedor{
+    padding: 0px;
+  }
+  .Ingresar_Tarea .Recordatorio button {
+    margin-left: 210px;
+    margin-top: 80px;
+    height: 40px;
+    width: 150px;
+    color: white;
+  }
+
+  .Ingresar_Tarea .Recordatorio{
+    padding: 0px;
+  }
+  .Ingresar_Tarea .Recordatorio .item {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 50px;
+  }
+  .Ingresar_Tarea .Recordatorio h1 {
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  
+}
+
