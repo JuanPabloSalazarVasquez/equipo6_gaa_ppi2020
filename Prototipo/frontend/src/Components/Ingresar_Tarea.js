@@ -1,110 +1,204 @@
 import React, { useState } from "react";
+import axios from 'axios'; //Compartir recursos entre servidores;
 import { Link } from 'react-router-dom'
 import { InputGroup } from "react-bootstrap";
 import Calendar from 'react-calendar';
+import {
+  Table, Button, Container, Modal, ModalHeader, ModalBody, FormGroup, ModalFooter,
+} from "reactstrap";
 
 import "../Global.css";
 import "../Styles/Calendario.css"
 import "../Styles/Recordatorio.css";
 import "../Styles/Ingresar_Tarea.css";
 
-export default function Ingresar_Tarea() {
-  /*
-    Funciones
-  */
-  const [value, setValue] = useState(new Date());
+const url = "http://localhost:5000/api/tarea/";
 
-  function onChange(nextValue) {
-    setValue(nextValue);
-  }
-
-  function continuar() {
-    var ingresar_tarea = document.getElementById("ingresar_tarea");
-    var calendario = document.getElementById("calendario");
-    var recordatorio = document.getElementById("recordatorio");
-    var i = 0
-
-    if (i == 0) {
-      ingresar_tarea.style.display = "none";
-      calendario.style.display = "block";
-      recordatorio.style.display = "none";
-
-      i++;
-    } else if (i == 1) {
-      ingresar_tarea.style.display = "none";
-      calendario.style.display = "none";
-      recordatorio.style.display = "block";
-    } else {
-      console.log("¡Error!")
+class Ingresar_Tarea extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      modalInsertar: false,
+      modalEliminar: false,
+      form: {
+        id: '',
+        titulo: '',
+        descripcion: '',
+        fecha: '',
+        minutos: '',
+        horas: '',
+        dias: '',
+        id: ''
+      }
     }
   }
-  /*
-    Funciones
-  */
 
-  return (
-    <div className="Ingresar_Tarea">
-      <div id="ingresar_tarea">
-        <h1> Ingresar tarea </h1>
+  modalInsertar = () => {
+    this.setState({ modalInsertar: !this.state.modalInsertar });
+  }
 
-        <div className="contenedor">
-          <h4> Título </h4>
-          <p> Ingresa el título </p>
+  seleccionarTarea = (tarea) => {
+    this.setState({
+      tipoModal: 'actualizar',
+      form: {
+        id: tarea.id,
+        titulo: tarea.titulo,
+        descripcion: tarea.descripcion,
+        fecha: tarea.fecha,
+        minutos: tarea.minutoss,
+        horas: tarea.horas,
+        dias: tarea.dias,
+        id_usuario: tarea.id_usuario
+      }
+    })
+  }
 
-          <div className="Rayita"></div>
+  peticionesGet = () => {
+    axios.get(url).then(response => {
+      this.setState({ data: response.data })
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
 
-          <h3>Descripción </h3>
-          <div className="text">
-            <p className="caracteres_restantes">500</p>
+  peticionesPost = async () => {
+    await axios.post(url, this.state.form).then(response => {
+      this.modalInsertar();
+      this.peticionesGet();
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  peticionesPut = () => {
+    axios.put(url + this.state.form.id, this.state.form).then(response => {
+      this.modalInsertar();
+      this.peticionesGet();
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  PeticionesDelete = () => {
+    axios.delete(url + this.state.form.id).then(response => {
+      this.setState({ modalEliminar: false });
+      this.peticionesGet();
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  handleChange = async e => {
+    e.persist();
+    await this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value
+      }
+    });
+    console.log(this.state.form)
+  }
+
+  componentDidMount() {
+    this.peticionesGet();
+  }
+
+  render() {
+    /*
+      Funciones
+    */
+    const { form } = this.state;
+
+    function continuar() {
+      var ingresar_tarea = document.getElementById("ingresar_tarea");
+      var recordatorio = document.getElementById("recordatorio");
+      var i = 0
+
+      if (i == 0) {
+        console.log(i);
+        ingresar_tarea.style.display = "none";
+        recordatorio.style.display = "block";
+
+        console.log("Segunda vuelta: " + i);
+        i++;
+        console.log("Tercera vuelta: " + i);
+      } else {
+        console.log("¡Error!")
+      }
+    }
+
+    function escribir() {
+      var id = document.getElementById("id");
+      var id_usuario = document.getElementById("id_usuario");
+      console.log("Hola")
+      id.defaultValues = "9"
+      id_usuario.defaultValue = "1"
+      console.log("mundo")
+    }
+    /*
+      Funciones
+    */
+    return (
+      <div className="Ingresar_Tarea">
+        <div id="ingresar_tarea">
+          <h1> Ingresar tarea </h1>
+
+          <div className="contenedor">
+            
+            <input className="form-control none" type="text" name="id" id="id" onChange={this.handleChange} value={this.state.form ? this.state.form.id : '9'} />
+            <input className="form-control" type="text" name="id_usuario" id="id_usuario" onChange={this.handleChange} value={this.state.form ? this.state.form.id_usuario : '1'} />
+
+            <h4> Título </h4>
+
+            <input className="form-control" type="text" name="titulo" id="titulo" onChange={this.handleChange} value={this.state.form ? this.state.form.titulo : ''} />
+
+            <div className="Rayita"></div>
+
+            <h3>Descripción </h3>
+            <input className="form-control text" type="text" name="descripcion" id="descripcion" onChange={this.handleChange} value={this.state.form ? this.state.form.descripcion : ''} />
+
+            <h3>Fecha límite (DD/MM/YY)</h3>
+            <input className="form-control" type="text" name="fecha" id="fecha" onChange={this.handleChange} value={this.state.form ? this.state.form.fecha : ''} />
+
+            <div className="Botones">
+              <button className="btn_continuar" onClick={continuar}>Continuar</button>
+              <button className="btn_continuar" onClick={escribir}>Escribir</button>
+            </div>
+
           </div>
+        </div>
 
-          <div className="Botones">
-            <button className="btn_continuar" onClick={continuar}>Continuar</button>
+
+        
+        <div className="Recordatorio" id="recordatorio">
+          <h1> Recordatorio </h1>
+
+          <div className="contenedor">
+            <div className="item">
+              <h3> Minutos</h3>
+              <input className="form-control" type="text" name="minutos" id="minutos" onChange={this.handleChange} value={this.state.form ? this.state.form.minutos : ''} />
+            </div>
+
+            <div className="item">
+              <h3> Horas </h3>
+              <input className="form-control" type="text" name="horas" id="horas" onChange={this.handleChange} value={this.state.form ? this.state.form.horas : ''} />
+            </div>
+
+            <div className="item">
+              <h3> Días </h3>
+              <input className="form-control" type="text" name="dias" id="dias" onChange={this.handleChange} value={this.state.form ? this.state.form.dias : ''} />
+            </div>
+
+            {this.state.tipoModal == 'insertar'}
+            <Link to="/Tablero" onClick={() => this.peticionesPost()}> <button>Agregar Tarea</button> </Link>
           </div>
         </div>
       </div>
-
-      <div className="Calendario" id="calendario">
-        <div className="contenedor">
-          <Calendar
-            onChange={onChange}
-            value={value.date}
-            className="react-calendar"
-          />
-          <button className="boton" onClick={continuar}>Ok</button>
-        </div>
-      </div>
-
-      <div className="Recordatorio" id="recordatorio">
-        <h1> Recordatorio </h1>
-
-        <div className="contenedor">
-          <div className="item">
-            <InputGroup.Radio aria-label="Radio button for following text input" className="input" />
-            <h3>Nada</h3>
-          </div>
-
-          <div className="item">
-            <InputGroup.Radio aria-label="Radio button for following text input" className="input" />
-            <h3> Minutos</h3>
-            <p> 30 </p>
-          </div>
-
-          <div className="item">
-            <InputGroup.Radio aria-label="Radio button for following text input" className="input" />
-            <h3> Horas </h3>
-            <p> 12 </p>
-          </div>
-
-          <div className="item">
-            <InputGroup.Radio aria-label="Radio button for following text input" className="input" />
-            <h3> Días </h3>
-            <p> 1 </p>
-          </div>
-
-          <Link to="/Tablero"> <button>Agregar Tarea</button> </Link>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
 }
+
+
+
+export default Ingresar_Tarea 
