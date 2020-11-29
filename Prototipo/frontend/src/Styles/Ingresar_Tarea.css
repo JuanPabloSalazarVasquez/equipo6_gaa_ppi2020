@@ -1,56 +1,82 @@
 
-.Ingresar_Tarea {
+.Ingresar_Tarea #ingresar_tarea {
   padding: 0px 0;
 }
 
-.Ingresar_Tarea h1 {
+.Ingresar_Tarea #ingresar_tarea h1 {
   margin-left: 150px;
 }
 
-.Ingresar_Tarea h4 {
+.Ingresar_Tarea #ingresar_tarea h4 {
   margin-top: 59px;
   color: rgb(255, 245, 245);
 }
 
-.Ingresar_Tarea p{
+.Ingresar_Tarea #ingresar_tarea p{
   font-size: 20px;
 }
 
-.Ingresar_Tarea .Rayita {
+.Ingresar_Tarea #ingresar_tarea .Rayita {
   height: 2px;
   width: 1;
   border-radius: 15px;
   background-color: rgba(212, 186, 186, 0.61);
 }
 
-.Ingresar_Tarea h3 {
+.Ingresar_Tarea #ingresar_tarea h3 {
   margin-top: 50px;
   color: rgb(255, 245, 245);
 }
 
-.Ingresar_Tarea .text {
+.Ingresar_Tarea #ingresar_tarea .text {
   height: 200px;
   width: 100%;
   border-radius: 15px;
   background-color: #73B2FF;
 }
 
-.Ingresar_Tarea .text .caracteres_restantes{
+.Ingresar_Tarea #ingresar_tarea .text .caracteres_restantes{
   color: grey;
   float: right;
   margin-top: 170px;
   margin-right: 10px;
 }
 
-.Ingresar_Tarea .Botones {
+.Ingresar_Tarea #ingresar_tarea .Botones {
   float: right;
   margin-right: 50px;
 
 }
 
-.Ingresar_Tarea button {
+.Ingresar_Tarea #ingresar_tarea button {
   height: 40px;
   width: 120px;
   display: inline-block;
   margin: 20px;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+
+  .Ingresar_Tarea #ingresar_tarea h1 {
+   
+   margin-left: 60px;
+
+  }
+
+  .Ingresar_Tarea #ingresar_tarea h4 {
+    margin-top: 59px;
+    color: rgb(255, 245, 245);
+    text-align: left;
+  }
+ 
+  .Ingresar_Tarea #ingresar_tarea .contenedor {
+    padding: 0px 50px;
+  }
+ 
+  .Ingresar_Tarea #ingresar_tarea button {
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    margin-left: 200px;
+  }
 }
