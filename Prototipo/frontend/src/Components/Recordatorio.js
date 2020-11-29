@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import "../Global.css";
 
-export default function Inicio() {
+export default function Recordatorio() {
   return (
     <div className="Recordatorio">
 
