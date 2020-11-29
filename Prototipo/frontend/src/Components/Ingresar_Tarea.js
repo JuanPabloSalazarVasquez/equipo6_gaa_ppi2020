@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from 'axios'; //Compartir recursos entre servidores;
 import { Link } from 'react-router-dom'
 import { InputGroup } from "react-bootstrap";
-import Calendar from 'react-calendar';
 import {
   Table, Button, Container, Modal, ModalHeader, ModalBody, FormGroup, ModalFooter,
 } from "reactstrap";
@@ -22,14 +21,14 @@ class Ingresar_Tarea extends React.Component {
       modalInsertar: false,
       modalEliminar: false,
       form: {
-        id: '',
+        id: 1,
         titulo: '',
         descripcion: '',
         fecha: '',
         minutos: '',
         horas: '',
         dias: '',
-        id: ''
+        id_usuario: 1
       }
     }
   }
@@ -42,14 +41,14 @@ class Ingresar_Tarea extends React.Component {
     this.setState({
       tipoModal: 'actualizar',
       form: {
-        id: tarea.id,
+        id: 2,
         titulo: tarea.titulo,
         descripcion: tarea.descripcion,
         fecha: tarea.fecha,
         minutos: tarea.minutoss,
         horas: tarea.horas,
         dias: tarea.dias,
-        id_usuario: tarea.id_usuario
+        id_usuario: 1
       }
     })
   }
@@ -198,7 +197,5 @@ class Ingresar_Tarea extends React.Component {
     );
   }
 }
-
-
 
 export default Ingresar_Tarea 
