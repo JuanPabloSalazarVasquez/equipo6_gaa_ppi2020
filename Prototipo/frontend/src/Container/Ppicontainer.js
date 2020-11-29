@@ -9,7 +9,6 @@ import Calendario from "../Components/Calendario";
 import Ingresar_Tarea from "../Components/Ingresar_Tarea";
 import Recordatorio from "../Components/Recordatorio";
 import Ver_Tarea from "../Components/Ver_Tarea";
-import Tablero_2 from "../Components/Tablero_2";
 
 //navegación
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
@@ -27,7 +26,6 @@ export default function Ppicontainer() {
     <Route exact path="/Ingresar_Tarea" component={Ingresar_Tarea} />
     <Route exact path="/Recordatorio" component={Recordatorio} />
     <Route exact path="/Ver_Tarea" component={Ver_Tarea} />
-    <Route exact path="/Tablero_2" component={Tablero_2} />
 </BrowserRouter>
   );
 }
