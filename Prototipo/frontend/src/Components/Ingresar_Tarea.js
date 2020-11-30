@@ -21,14 +21,14 @@ class Ingresar_Tarea extends React.Component {
       modalInsertar: false,
       modalEliminar: false,
       form: {
-        id: 1,
+        id: '1',
         titulo: '',
         descripcion: '',
         fecha: '',
         minutos: '',
         horas: '',
         dias: '',
-        id_usuario: 1
+        id_usuario: '1'
       }
     }
   }
@@ -126,15 +126,6 @@ class Ingresar_Tarea extends React.Component {
         console.log("¡Error!")
       }
     }
-
-    function escribir() {
-      var id = document.getElementById("id");
-      var id_usuario = document.getElementById("id_usuario");
-      console.log("Hola")
-      id.defaultValues = "9"
-      id_usuario.defaultValue = "1"
-      console.log("mundo")
-    }
     /*
       Funciones
     */
@@ -144,10 +135,6 @@ class Ingresar_Tarea extends React.Component {
           <h1> Ingresar tarea </h1>
 
           <div className="contenedor">
-            
-            <input className="form-control none" type="text" name="id" id="id" onChange={this.handleChange} value={this.state.form ? this.state.form.id : '9'} />
-            <input className="form-control" type="text" name="id_usuario" id="id_usuario" onChange={this.handleChange} value={this.state.form ? this.state.form.id_usuario : '1'} />
-
             <h4> Título </h4>
 
             <input className="form-control" type="text" name="titulo" id="titulo" onChange={this.handleChange} value={this.state.form ? this.state.form.titulo : ''} />
@@ -162,7 +149,6 @@ class Ingresar_Tarea extends React.Component {
 
             <div className="Botones">
               <button className="btn_continuar" onClick={continuar}>Continuar</button>
-              <button className="btn_continuar" onClick={escribir}>Escribir</button>
             </div>
 
           </div>
