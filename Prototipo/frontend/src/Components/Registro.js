@@ -100,34 +100,26 @@ class Registro extends React.Component {
     const { form } = this.state;
     return (
       <div className="App container text-center">
-
-        <button className="btn btn-success" onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar usuario (temporal)</button>
         <div className="Registro">
 
           <h1>Registro</h1>
           <div className="formulario">
             <Form>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Correo electrónico</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Ingrese su correo electrónico"
-                />
+                <label htmlFor="email">email</label>
+                <input className="form-control" type="text" name="email" id="email" onChange={this.handleChange} value={this.state.form ? this.state.form.email : ''} placeholder="Ingrese su correo electrónico" />
               </Form.Group>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Nombre de usuario</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Ingrese su nombre de usuario"
-                />
+                <label htmlFor="nombre_usuario">nombre_usuario</label>
+                <input className="form-control" type="text" name="nombre_usuario" id="nombre_usuario" onChange={this.handleChange} value={this.state.form ? this.state.form.nombre_usuario : ''} placeholder="Ingrese su nombre de usuario" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" placeholder="Ingrese su contraseña" />
+                <label htmlFor="contraseña">contraseña</label>
+                <input className="form-control" type="text" name="contraseña" id="contraseña" onChange={this.handleChange} value={this.state.form ? this.state.form.contraseña : ''} placeholder="Ingrese su contraseña" />
               </Form.Group>
               <div className="botones center_txt">
                 <Link to="/"> <button>Atrás</button> </Link>
-                <Link to="/Tablero"> <button>Registrarme</button> </Link>
+                <Link to="/Tablero"> <button onClick={() => this.peticionesPost()}>Registrarme</button> </Link>
               </div>
             </Form>
           </div>
