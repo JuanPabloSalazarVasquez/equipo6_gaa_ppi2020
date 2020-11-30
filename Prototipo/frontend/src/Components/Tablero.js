@@ -100,31 +100,35 @@ class Tablero extends React.Component {
     this.peticionesGet();
   }
 
+
   render() {
     const { form } = this.state;
     return (
       <div className="App container text-center">
 
-        <button className="btn btn-success" onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar Tarea (temporal)</button>
         <div className="Tablero">
-
           <div className="fondo">
+            <ul className="lista">
+              {this.state.data.map(tarea => {
+                return (
+                  <li>
+                    <div className="item">
+                      <Link to='/Ver_Tarea/'><button>{tarea.titulo}</button> </Link>
+                      <button className="btn_basura" onClick={() => { this.seleccionarTarea(tarea); this.setState({ modalEliminar: true }) }}> <img src="./img/basurita.png" alt="Basura" className="basura" /> </button>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
 
-            {this.state.data.map(tarea => {
-              return (
-                <div className="item">
-                  <Link to='/Ver_Tarea/:{tarea.id}'><button>{tarea.titulo}</button> </Link>
-                  <button className="btn_basura" onClick={() => { this.seleccionarTarea(tarea); this.setState({ modalEliminar: true }) }}> <img src="./img/basurita.png" alt="Basura" className="basura" /> </button>
-                </div>
-              )
-            })}
-
-            <Link to="/Ingresar_Tarea"> <img className="btn_añadir" src="./img/agregar.png" alt="añadir" /> </Link>
+            <div className="boton">
+              <Link to="/Ingresar_Tarea"> <img className="btn_añadir" src="./img/agregar.png" alt="añadir" /> </Link>
+            </div>
           </div>
         </div>
 
-        <div className="container text-center">
 
+        <div className="container text-center">
           <Modal id="formContent" isOpen={this.state.modalInsertar}>
             <h1>Modal Insertar</h1>
             <ModalHeader style={{ display: 'block' }}>
@@ -137,24 +141,24 @@ class Tablero extends React.Component {
                 <br />
                 <label htmlFor="titulo">Titulo</label>
                 <input className="form-control" type="text" name="titulo" id="titulo" onChange={this.handleChange} value={this.state.form ? this.state.form.titulo : ''} />
-                
+
                 <br />
                 <label htmlFor="descripcion">Descripción</label>
                 <input className="form-control" type="text" name="descripcion" id="descripcion" onChange={this.handleChange} value={this.state.form ? this.state.form.descripcion : ''} />
                 <br />
-                
+
                 <label htmlFor="fecha">Fecha</label>
                 <input className="form-control" type="text" name="fecha" id="fecha" onChange={this.handleChange} value={this.state.form ? this.state.form.fecha : ''} />
                 <br />
-                
+
                 <label htmlFor="minutos">Minutos</label>
                 <input className="form-control" type="text" name="minutos" id="minutos" onChange={this.handleChange} value={this.state.form ? this.state.form.minutos : ''} />
                 <br />
-                
+
                 <label htmlFor="horas">Horas</label>
                 <input className="form-control" type="text" name="horas" id="horas" onChange={this.handleChange} value={this.state.form ? this.state.form.horas : ''} />
                 <br />
-                
+
                 <label htmlFor="dias">Días</label>
                 <input className="form-control" type="text" name="dias" id="dias" onChange={this.handleChange} value={this.state.form ? this.state.form.dias : ''} />
                 <br />
