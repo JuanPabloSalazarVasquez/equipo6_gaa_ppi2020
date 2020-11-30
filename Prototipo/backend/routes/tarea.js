@@ -20,10 +20,22 @@ router.get('/tarea', (req, res) => {
     })
 })
 
+//Petición get WHERE
+router.get('/tarea/:id', (req, res) => {
+  const { id } = req.params;
+  mysqlConnection.query('SELECT * FROM tarea', [id], (err, rows, fields) => {
+      if (!err) {
+        res.json(rows);
+      } else {
+        console.log(err);
+      }
+    })
+})
+
 //Petición post
 router.post('/tarea', (req, res) => {
-  const { id_tarea, titulo, descripcion, fecha, minutos, horas, dias, id_usuario } = req.body
-  let tipo = [id_tarea, titulo, descripcion, fecha, minutos, horas, dias, id_usuario];
+  const { id, titulo, descripcion, fecha, minutos, horas, dias, id_usuario } = req.body
+  let tipo = [id, titulo, descripcion, fecha, minutos, horas, dias, id_usuario];
   let nuevoTipo = `INSERT INTO tarea VALUES (?,?,?,?,?,?,?,?);`
 
   mysqlConnection.query(nuevoTipo, tipo, (err, results, fields) => {
@@ -37,7 +49,7 @@ router.post('/tarea', (req, res) => {
 //Petición put
 router.put('/tarea/:id', (req, res) => {
   const { titulo, descripcion, fecha, minutos, horas, dias, id_usuario } = req.body
-  const { id_tarea } = req.params
+  const { id } = req.params
 
   mysqlConnection.query(`UPDATE tarea
                        SET descripcion = ?,
@@ -46,8 +58,8 @@ router.put('/tarea/:id', (req, res) => {
                        horas = ?,
                        dias = ?,
                        id_usuario = ?,
-                       WHERE id_tarea = ?`,
-    [titulo, descripcion, fecha, minutos, horas, dias, id_usuario, id_tarea], (err, rows, fields) => {
+                       WHERE id = ?`,
+    [titulo, descripcion, fecha, minutos, horas, dias, id_usuario, id], (err, rows, fields) => {
       if (!err) {
         res.json({ status: `La Tarea ha sido actualizada con éxito` });
       } else {
@@ -56,10 +68,10 @@ router.put('/tarea/:id', (req, res) => {
     });
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
+//Petición delete
 router.delete('/tarea/:id', (req, res) => {
-  const { id_tarea } = req.params;
-  mysqlConnection.query(`DELETE FROM tarea WHERE id_tarea =?`, [id_tarea], (err, rows, fields) => {
+  const { id } = req.params;
+  mysqlConnection.query(`DELETE FROM tarea WHERE id =?`, [id], (err, rows, fields) => {
     if ("!err") {
       res.json({ status: `La tarea ha sido eliminada con exito` })
     } else {
