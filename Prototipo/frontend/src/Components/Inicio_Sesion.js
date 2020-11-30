@@ -100,8 +100,6 @@ class Inicio_Sesion extends React.Component {
     const { form } = this.state;
     return (
       <div className="App container text-center">
-
-        <button className="btn btn-success" onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar usuario (temporal)</button>
         <div className="Inicio_Sesion">
           <h1>Inicio de sesión</h1>
           <div className="formulario">
